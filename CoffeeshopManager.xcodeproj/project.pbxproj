@@ -13,6 +13,7 @@
 		848EF0622121B5AA0039DDC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 848EF0612121B5AA0039DDC9 /* Assets.xcassets */; };
 		848EF0652121B5AA0039DDC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 848EF0632121B5AA0039DDC9 /* LaunchScreen.storyboard */; };
 		848EF06D2121B6100039DDC9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 848EF06C2121B6100039DDC9 /* GoogleService-Info.plist */; };
+		848EF09121230B7C0039DDC9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848EF09021230B7C0039DDC9 /* LoginViewController.swift */; };
 		E44F5816C0F08796B40DA25D /* Pods_CoffeeshopManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E9E8770B5D3589C968AFB9 /* Pods_CoffeeshopManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		848EF0642121B5AA0039DDC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		848EF0662121B5AA0039DDC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		848EF06C2121B6100039DDC9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		848EF09021230B7C0039DDC9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			children = (
 				848EF05A2121B5A80039DDC9 /* AppDelegate.swift */,
 				848EF05C2121B5A80039DDC9 /* AuthViewController.swift */,
+				848EF09021230B7C0039DDC9 /* LoginViewController.swift */,
 				848EF05E2121B5A80039DDC9 /* Main.storyboard */,
 				848EF0612121B5AA0039DDC9 /* Assets.xcassets */,
 				848EF0632121B5AA0039DDC9 /* LaunchScreen.storyboard */,
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				848EF09121230B7C0039DDC9 /* LoginViewController.swift in Sources */,
 				848EF05D2121B5A80039DDC9 /* AuthViewController.swift in Sources */,
 				848EF05B2121B5A80039DDC9 /* AppDelegate.swift in Sources */,
 			);
