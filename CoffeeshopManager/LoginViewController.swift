@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class LoginViewController: UIViewController {
 
@@ -62,18 +63,49 @@ class LoginViewController: UIViewController {
                 if let error = error {
                     self.errorLabel.text = error.localizedDescription
                 } else {
-                    //segue
+                   var isManager = false
+                   var cofName = ""
+                    Database.database().reference().child("users").child(user!.user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                        if let userDict = snapshot.value as? [String:Any] {
+                            if let manager = userDict["isManager"] as? Bool {
+                                isManager = manager
+                            }
+                            if let name = userDict["coffeshopName"] as? String {
+                                cofName = name
+                            }
+                        }
+                    })
+                    
+                    if isManager {
+                        // to manager VC
+                        self.performSegue(withIdentifier: "toManagerMain", sender: cofName)
+                        
+                    }else {
+                        //to staff VC
+                    }
                 }
+                
             }
         } else {
+            guard let cofName = coffeshopName.text, !cofName.isEmpty else {
+                coffeshopName.layer.borderWidth = 2
+                coffeshopName.layer.cornerRadius = 5
+                coffeshopName.layer.borderColor = UIColor.red.cgColor
+                errorLabel.text = "Enter coffeeshop name"
+                errorLabel.isHidden = false
+                return
+            }
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if let error = error {
                     self.errorLabel.text = error.localizedDescription
                 } else {
-                    //segue
+                    Database.database().reference().child("users").child(user!.user.uid).setValue(["isManager":true, "coffeshopName":cofName])
+                    self.performSegue(withIdentifier: "toManagerMain", sender: cofName)
+                    
                 }
             }
         }
+        
     }
     @IBAction func emailEdit(_ sender: Any) {
         emailTextField.layer.borderColor = UIColor.clear.cgColor
@@ -86,6 +118,13 @@ class LoginViewController: UIViewController {
          coffeshopName.layer.borderColor = UIColor.clear.cgColor
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toManagerMain" {
+            if let managerVC = segue.destination as? ManagerMainViewController {
+                managerVC.coffeeshopName = sender as! String
+            }
+        }
+    }
     
 }
 
