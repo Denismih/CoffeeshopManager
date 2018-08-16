@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -25,21 +25,26 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         errorLabel.isHidden = true
-        //emailTextField.setBottomBorder()
-        //passwordTextField.setBottomBorder()
-        //coffeshopName.setBottomBorder()
+        
         
         if loginMode {
             coffeeshopLabel.isHidden = true
             coffeshopName.isHidden = true
+            
+            //REMOVE FOR PRODACTION
+            emailTextField.text = "user4@gmail.com"
+            passwordTextField.text = "123456"
+            //*************************
+            
+            
         } else {
-          loginBtn.setTitle("Sign Up", for: .normal)
+            loginBtn.setTitle("Sign Up", for: .normal)
         }
         
         
     }
-
-
+    
+    
     @IBAction func loginBtnTapped(_ sender: Any) {
         guard emailTextField.text != "" else {
             emailTextField.layer.borderWidth = 2
@@ -59,34 +64,39 @@ class LoginViewController: UIViewController {
         }
         
         if loginMode {
-            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+            //LOG IN
+           Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if let error = error {
                     self.errorLabel.text = error.localizedDescription
                 } else {
-                   var isManager = false
-                   var cofName = ""
+                   self.startSpiner()
                     Database.database().reference().child("users").child(user!.user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
                         if let userDict = snapshot.value as? [String:Any] {
                             if let manager = userDict["isManager"] as? Bool {
-                                isManager = manager
+                               if let name = userDict["coffeshopName"] as? String {
+                                   
+                                    if manager {
+                                        // to manager VC
+                                        UIApplication.shared.endIgnoringInteractionEvents()
+                                        self.performSegue(withIdentifier: "toManagerMain", sender: name)
+                                        
+                                    }else {
+                                        //to staff VC
+                                        UIApplication.shared.endIgnoringInteractionEvents()
+                                        self.performSegue(withIdentifier: "toStaffMain", sender: name)
+                                    }
+                                }
                             }
-                            if let name = userDict["coffeshopName"] as? String {
-                                cofName = name
-                            }
+                            
                         }
                     })
                     
-                    if isManager {
-                        // to manager VC
-                        self.performSegue(withIdentifier: "toManagerMain", sender: cofName)
-                        
-                    }else {
-                        //to staff VC
-                    }
+                    
                 }
                 
             }
         } else {
+            //SIGN UP
             guard let cofName = coffeshopName.text, !cofName.isEmpty else {
                 coffeshopName.layer.borderWidth = 2
                 coffeshopName.layer.cornerRadius = 5
@@ -107,6 +117,22 @@ class LoginViewController: UIViewController {
         }
         
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toManagerMain" {
+            if let managerVC = segue.destination as? ManagerMainViewController {
+                managerVC.coffeeshopName = sender as! String
+            }
+        }
+        if segue.identifier == "toStaffMain" {
+            if let staffVC = segue.destination as? StaffMainViewController {
+                staffVC.coffeeshopName = sender as! String
+            }
+        }
+    }
+    
+    //Back to normal textfield
     @IBAction func emailEdit(_ sender: Any) {
         emailTextField.layer.borderColor = UIColor.clear.cgColor
     }
@@ -115,29 +141,22 @@ class LoginViewController: UIViewController {
         passwordTextField.layer.borderColor = UIColor.clear.cgColor
     }
     @IBAction func coffeshopNameEdit(_ sender: Any) {
-         coffeshopName.layer.borderColor = UIColor.clear.cgColor
+        coffeshopName.layer.borderColor = UIColor.clear.cgColor
     }
+
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toManagerMain" {
-            if let managerVC = segue.destination as? ManagerMainViewController {
-                managerVC.coffeeshopName = sender as! String
-            }
-        }
+    func startSpiner() {
+    let activInd = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    activInd.center = self.view.center
+    activInd.hidesWhenStopped = true
+    activInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+    view.addSubview(activInd)
+    activInd.startAnimating()
+    UIApplication.shared.beginIgnoringInteractionEvents()
     }
     
 }
 
-extension UITextField {
-    func setBottomBorder() {
-        self.borderStyle = .none
-        self.layer.backgroundColor = UIColor.white.cgColor
-        
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
-        self.layer.shadowOpacity = 1.0
-        self.layer.shadowRadius = 0.0
-    }
-}
+
+
 

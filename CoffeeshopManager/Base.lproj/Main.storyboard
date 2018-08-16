@@ -195,11 +195,27 @@
                         <outlet property="loginBtn" destination="VUh-gL-gDd" id="oEd-mX-210"/>
                         <outlet property="passwordTextField" destination="VIZ-sV-oU7" id="uyh-Bn-hur"/>
                         <segue destination="j5A-Kc-ax4" kind="show" identifier="toManagerMain" id="9Bv-Ue-tu1"/>
+                        <segue destination="yZW-BH-Bd4" kind="show" identifier="toStaffMain" id="pY0-lF-thw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvw-BH-fjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="728.79999999999995" y="31.934032983508249"/>
+        </scene>
+        <!--Staff Main View Controller-->
+        <scene sceneID="G0O-me-r6e">
+            <objects>
+                <viewController id="yZW-BH-Bd4" customClass="StaffMainViewController" customModule="CoffeeshopManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9m9-qI-czI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5oV-GP-3Hl"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JCQ-iR-NC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1476" y="-691"/>
         </scene>
         <!--Manager Main View Controller-->
         <scene sceneID="itq-eb-UTr">
