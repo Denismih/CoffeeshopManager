@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8702624D04F36B4E52A2D67B1E0BE084"
-               BlueprintName = "Pods-CoffeeshopManager"
+               BlueprintIdentifier = "C5A2DB7A84B7B78E359870D2E1B24AA7"
+               BlueprintName = "FSCalendar"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "Pods-CoffeeshopManager.framework">
+               BuildableName = "FSCalendar.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

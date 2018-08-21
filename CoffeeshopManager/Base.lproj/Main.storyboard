@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -155,7 +156,7 @@
                                 </items>
                             </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUh-gL-gDd">
-                                <rect key="frame" x="166" y="478" width="42" height="30"/>
+                                <rect key="frame" x="166" y="438" width="42" height="30"/>
                                 <state key="normal" title="Log In"/>
                                 <connections>
                                     <action selector="loginBtnTapped:" destination="TRY-C7-qT7" eventType="touchUpInside" id="eIM-bT-DDi"/>
@@ -182,7 +183,7 @@
                             <constraint firstItem="KOQ-eT-ZyI" firstAttribute="top" secondItem="2ge-BK-sVb" secondAttribute="bottom" constant="8" id="ecw-Sv-1n7"/>
                             <constraint firstItem="KOQ-eT-ZyI" firstAttribute="top" secondItem="v0C-lU-EqU" secondAttribute="bottom" constant="37" id="mlG-Lo-848"/>
                             <constraint firstItem="PNs-as-rsC" firstAttribute="leading" secondItem="haB-vE-hjJ" secondAttribute="leading" constant="7" id="tWA-tH-qnN"/>
-                            <constraint firstItem="VUh-gL-gDd" firstAttribute="top" secondItem="PNs-as-rsC" secondAttribute="bottom" constant="70" id="vd8-pz-SSr"/>
+                            <constraint firstItem="VUh-gL-gDd" firstAttribute="top" secondItem="PNs-as-rsC" secondAttribute="bottom" constant="30" id="vd8-pz-SSr"/>
                             <constraint firstItem="VIZ-sV-oU7" firstAttribute="top" secondItem="KOQ-eT-ZyI" secondAttribute="bottom" constant="70" id="wqF-bP-FEi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="haB-vE-hjJ"/>
@@ -230,7 +231,11 @@
                                 <items>
                                     <barButtonItem title="Item" id="ZM1-rp-jbr"/>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="SJ4-zr-gpb"/>
-                                    <barButtonItem title="Item" id="3Z9-JU-Ryp"/>
+                                    <barButtonItem title="Manage schedule" id="3Z9-JU-Ryp">
+                                        <connections>
+                                            <segue destination="9zz-BX-ljr" kind="show" id="lgh-ec-g2R"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="pMU-KC-9tJ"/>
                                     <barButtonItem title="Item" id="W6s-wX-1Fi"/>
                                 </items>
@@ -248,6 +253,88 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GlJ-hq-5Et" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1476" y="32"/>
+        </scene>
+        <!--Data Source-->
+        <scene sceneID="gMg-tN-cft">
+            <objects>
+                <viewController id="9zz-BX-ljr" customClass="ManageScheduleViewController" customModule="CoffeeshopManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jIg-cw-Z0M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FgY-ab-Sqy">
+                                <rect key="frame" x="0.0" y="523" width="375" height="144"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A3J-cQ-enT">
+                                    <size key="itemSize" width="139" height="131"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="3jW-5i-F2e" customClass="StaffCollectionViewCell" customModule="CoffeeshopManager" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="6.5" width="139" height="131"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="139" height="131"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFd-KI-oSO">
+                                                    <rect key="frame" x="8" y="55.5" width="123" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.1857388616" blue="0.57339501380000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <color key="backgroundColor" red="0.73605488990000001" green="0.73605488990000001" blue="0.73605488990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="aFd-KI-oSO" firstAttribute="centerY" secondItem="3jW-5i-F2e" secondAttribute="centerY" id="2e6-tK-KTU"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="aFd-KI-oSO" secondAttribute="trailing" id="Q8e-lE-POu"/>
+                                            <constraint firstItem="aFd-KI-oSO" firstAttribute="leading" secondItem="3jW-5i-F2e" secondAttribute="leadingMargin" id="yhX-gI-njB"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="staffName" destination="aFd-KI-oSO" id="6oj-BI-9cK"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="9zz-BX-ljr" id="Ejs-59-QbX"/>
+                                    <outlet property="delegate" destination="9zz-BX-ljr" id="rVc-uf-Mgc"/>
+                                </connections>
+                            </collectionView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LFp-be-3a8" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="20" width="375" height="488"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsSelection" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectionColor">
+                                        <color key="value" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9zz-BX-ljr" id="4O9-6W-NzU"/>
+                                    <outlet property="delegate" destination="9zz-BX-ljr" id="g7M-Kv-l6d"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="XlM-Bj-E9d"/>
+                    </view>
+                    <connections>
+                        <outlet property="calendar" destination="LFp-be-3a8" id="tDx-bO-Wub"/>
+                        <outlet property="staffCollection" destination="FgY-ab-Sqy" id="akR-rD-KQF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MAX-YD-Kgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2248.8000000000002" y="31.934032983508249"/>
         </scene>
     </scenes>
     <resources>

@@ -25,6 +25,7 @@ PODS:
     - leveldb-library (~> 1.18)
   - FirebaseInstanceID (3.0.0):
     - FirebaseCore (~> 5.0)
+  - FSCalendar (2.7.9)
   - GoogleToolboxForMac/Defines (2.1.4)
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - FSCalendar
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -49,6 +51,7 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseDatabase
     - FirebaseInstanceID
+    - FSCalendar
     - GoogleToolboxForMac
     - GTMSessionFetcher
     - leveldb-library
@@ -61,11 +64,12 @@ SPEC CHECKSUMS:
   FirebaseCore: cafc814b2d84fc8733f09e653041cc2165332ad7
   FirebaseDatabase: 697eb53e5b4fe7cd4fa8756c1f82a9fca011345f
   FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
+  FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
   GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: f1b00ce0facdb287b17f8e68d867f2b52fee1fdc
+PODFILE CHECKSUM: 5f17b6cb0f84689e0c2c1f2ca7ac1f7046e65d3b
 
 COCOAPODS: 1.5.2
